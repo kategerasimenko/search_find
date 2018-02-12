@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  
+  <title>База данных <...></title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+<!--       нужна ссылка на главную -->
+        <a class="navbar-brand" href="#">База данных <...></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+<!--                   нужна ссылка -->
+                    <a class="nav-link" href="#">Глаголы <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+<!--                   нужна ссылка -->
+                    <a class="nav-link" href="#">О проекте</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main role="main" class="container">
+        <div class="jumbotron">
+            <h3>База данных <...></h3>
+            <p class="lead">информация о базе</p>
+            <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">о проекте &raquo;</a>
+        </div>
+        <div id="verb-names" class="container">
+        <!--вставляем сюда глагол и инфу-->
+            <div id="verb-names" class="container">
+            {% for f in field_list %}
+                <div class="row">
+                    <div class="col">
+                        <h2><a href="{% url 'semanticfield' f.id %}">{{ f }}</a></h2>
+                    </div>
+                    <div class="col">
+                        информация о нем
+                    </div>
+                    <div class="w-100"></div>
+                    <hr>
+                </div>
+            {% endfor %}
+            </div>
+      <!--как это было вставлено ручками-->
+      <!--<div class="row">-->
+          <!--<div class="col">-->
+              <!--<h2><a href="#">Искать</a></h2>-->
+          <!--</div>-->
+          <!--<div class="col">-->
+              <!--информация о нем-->
+          <!--</div>-->
+          <!--<div class="w-100"></div>-->
+          <!--<hr>-->
+          <!--<div class="col">-->
+              <!--<h2><a href="#">Найти</a></h2>-->
+          <!--</div>-->
+          <!--<div class="col">-->
+              <!--информация о нем-->
+          <!--</div>-->
+          <!--<div class="w-100"></div>-->
+          <!--<hr>-->
+          <!--<div class="col">-->
+              <!--<h2><a href="#">Обнаружить</a></h2>-->
+          <!--</div>-->
+          <!--<div class="col">-->
+              <!--информация о нем-->
+          <!--</div>-->
+          <!--<div class="w-100"></div>-->
+          <!--<hr>-->
+          <!--<div class="col">-->
+              <!--<h2><a href="#">Найтись</a></h2>-->
+          <!--</div>-->
+          <!--<div class="col">-->
+              <!--информация о нем-->
+          <!--</div>-->
+          <!--<div class="w-100"></div>-->
+          <!--<hr>-->
+          <!--<div class="col">-->
+              <!--<h2><a href="#">Находиться</a></h2>-->
+          <!--</div>-->
+          <!--<div class="col">-->
+              <!--информация о нем-->
+          <!--</div>-->
+        </div>
+    </main>
+    
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
