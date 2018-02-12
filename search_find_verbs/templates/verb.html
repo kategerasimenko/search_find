@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>База данных <...></title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+<!--     нужна ссылка на главную -->
+    <a class="navbar-brand" href="#">База данных <...></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+<!--                 нужна ссылка -->
+                <a class="nav-link" href="#">Глаголы <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+<!--                 нужна ссылка -->
+                <a class="nav-link" href="#">О проекте</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div id="verb" class="container-fluid">
+    <!--вставляем сюда глагол-->
+    <div class="row">
+        <h2>{{ field }}</h2>
+        <!--можно ещё какую-то инфу о нем написать-->
+    </div>
+</div>
+<div class="table-responsive">
+<table id="large-table" class="table table-hover" frame="vsides">
+    <thead class="thead-light">
+    <!--делаем названия столбцов-->
+    <tr>
+        <th scope="col">Тип значения</th>
+        <th scope="col">Значение</th>
+        <th scope="col">Характеристики</th>
+        <th scope="col">Примечания</th>
+        <th scope="col">Примеры контекстов</th>
+        {% for lang in langs %}
+            <th scope="col">{{ lang.language }}: глагол</th>
+            <th scope="col">{{ lang.language }}: пример</th>
+        {% endfor %}
+    </tr>
+    <!--как это было ручками-->
+    <!--<tr>-->
+        <!--<th scope="col">MeaningType</th>-->
+        <!--<th scope="col">Meaning</th>-->
+        <!--<th scope="col">Specification (C)</th>-->
+        <!--<th scope="col">Примеры контекстов</th>-->
+        <!--<th scope="col">Русский</th>-->
+        <!--<th scope="col">Сербский</th>-->
+        <!--<th scope="col">Сербский (глагол в начальной форме)</th>-->
+        <!--<th scope="col">Кунбарланг</th>-->
+        <!--<th scope="col">Японский (пример с переводом)</th>-->
+        <!--<th scope="col">Японский (глагол)</th>-->
+    <!--</tr>-->
+    </thead>
+    <tbody>
+    <!--делаем строки-->
+    <!--с th scope="row" будет выделена-->
+    <!--с rowspan="число" будет объединение ячеек на указанное кол-во-->
+    {% for meaning_type,mtn,meanings in all_meanings %}
+        <tr>
+            <th scope="row" rowspan="{{ mtn }}">{{ meaning_type }}</th>
+            {% for meaning,mn,examples in meanings %}
+                <th scope="row" rowspan="{{ mn }}">{{ meaning.meaning }}</th>
+                <td scope="row" rowspan="{{ mn }}">{{ meaning.object_ref }}, {{ meaning.object_animacy }}, {{ meaning.purpose }}</td>
+                {% for example,langs in examples %}
+                        <td scope="row">{{ example.specification }}</td>
+                        <td scope="row">{{ example.example }}</td>
+                        {% for langex in langs %}
+                            <td scope="row">{% for verb in langex.verbs.all %}{{ verb.verb }},{% endfor %}</td>
+                            <td scope="row">{{ langex.example }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                {% endfor %}
+                </tr>
+                <tr>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    <!--как было ручками-->
+    <!--<tr>-->
+        <!--<th scope="row" rowspan="12">прямые</th>-->
+        <!--<td rowspan="8">Реф., опр.: перебор мест</td>-->
+        <!--<td rowspan="2">одушевленный объект</td>-->
+        <!--<td>Полиция ищет преступника по всему городу.</td>-->
+        <!--<td>искать, разыскивать</td>-->
+        <!--<td>тражи преступника/трага за преступником по граду</td>-->
+        <!--<td>тражити, трагати</td>-->
+        <!--<td>-yawanj</td>-->
+        <!--<td>警察は犯人を捜している keisatsu wa hannin o sagashite-iru «полиция ищет преступника»</td>-->
+        <!--<td>sagasu</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+        <!--<td>Я ищу папу/Васю, хочу с ним поговорить.</td>-->
+        <!--<td>искать</td>-->
+        <!--<td>тражим, искам тату</td>-->
+        <!--<td>тражити, искати</td>-->
+        <!--<td>-yawanj</td>-->
+        <!--<td>俺は野良猫である。訳あって夏目さんを探している。Ore wa noraneko de aru. Wake atte Natsume-san o sagashite-iru. «Я бродячий кот. По одному делу ищу г-на Нацумэ» (автора романа «Ваш покорный слуга кот»)</td>-->
+        <!--<td>sagasu</td>-->
+    <!--</tr>-->
+    </tbody>
+</table>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

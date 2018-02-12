@@ -18,6 +18,6 @@ from .views import *
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^(?P<pk>\w+)/$', SemanticFieldView.as_view(), name='semanticfield'),
+    url(r'^(?P<pk>\w+)/$', SemanticFieldView, name='semanticfield'),
 ]
 
