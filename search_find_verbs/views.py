@@ -118,8 +118,10 @@ def SearchFormView(request):
     template_name = 'search_form.html'
     form = SearchForm(initial={'verb_conj': 'and'})
     return render(request,template_name,{'form':form})
-    
-    
+
+
+def AboutView(request):
+    return render(request, 'about.html')
 
         
             

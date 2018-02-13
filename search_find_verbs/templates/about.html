@@ -5,15 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+=======
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+>>>>>>> Stashed changes
 
-    <title>База данных <...></title>
+    <title>ЕВРика</title>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
     <!--       нужна ссылка на главную -->
-    <a class="navbar-brand display-1" href="{% url 'index' %}">База данных <...></a>
+    <a class="navbar-brand display-1" href="{% url 'index' %}">ЕВРика</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,16 +32,41 @@
                 <a class="nav-link" href="{% url 'search' %}">Поиск</a>
             </li>
             <li class="nav-item">
-                <!--                   нужна ссылка -->
-                <a class="nav-link" href="#">О проекте</a>
+                <a class="nav-link" href="{% url 'about' %}">О проекте</a>
             </li>
         </ul>
     </div>
 </nav>
 <div class="container card">
     <div class="card-body">
+<<<<<<< Updated upstream
         <h4>Проект ...</h4>
         <p class="text-justify">информация</p>
+=======
+        <p class="text-justify">Проект выполнен в честь юбилея <b>Е</b>катерины <b>В</b>ладимировны <b>Р</b>ахилиной,
+            выдающегося лингвиста, профессора и наставника. В основе проекта лежит база данных,
+            собранная её учениками и единомышленниками. Здесь Вы можете <b>искать</b> и <b>найти</b> глаголы поиска
+            и находки шести языков. В базе <b>находится</b> информация о семантических полях, типах значений,
+            характеристиках объекта и цели. Также тут Вы <b>обнаружите</b> примеры употребления.
+            Однако, как отмечают авторы одноимённой книги, это не обобщение завершённой работы, а материал
+            для новых находок, так что много что тут может <b>найтись</b>, доселе не найденного.
+            <br>Осторожно: находишь всегда то, что не искал.<br>
+            <br>
+
+            Над материалом работали:<br>
+            Д. А. Рыжова, М. Станкович (русский и сербский языки)<br>
+            А. С. Панина (японский язык)<br>
+            М. В. Кюсева, И. С. Капитонов (язык кунбарланг)<br>
+            Б. В. Орехов (исландский язык)<br>
+            В. Ю. Гусев (нганасанский язык)<br>
+            <br>
+
+            Сайт выполнили студенты Школы лингвистики:<br>
+            Екатерина Герасименко<br>
+            Анна Зуева<br>
+            Елена Сокур<br>
+        </p>
+>>>>>>> Stashed changes
     </div>
 </div>
 <footer class="footer ">
