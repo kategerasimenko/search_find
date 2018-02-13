@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
-from django.db.models import Q
 from .models import *
 from .forms import *
 
@@ -62,12 +61,13 @@ def SearchFormView(request):
             'semfield':'field__pk__in',
             'meaning_type':'meaning__meaning_type__pk__in',
             'meaning':'meaning__meaning__in',
-            'meaning_ref':'meaning__object_ref__in',
-            'meaning_animacy':'meaning__object_animacy__in',
-            'meaning_purpose':'meaning__purpose__in'}
+            'object_ref':'meaning__object_ref__in',
+            'object_animacy':'meaning__object_animacy__in',
+            'purpose':'meaning__purpose__in'}
         values = {correspondence[param]:request.GET.getlist(param) for param in request.GET 
                   if param in correspondence}
         meaningexs = MeaningExample.objects.filter(**values)
+        print(values)
         meaningexs = sorted(meaningexs,key=lambda x: (x.field.field))
         meanings_by_field = [(k, list(g)) for k,g in groupby(meaningexs, key=lambda x: (x.field.field))] # делим на семполя
         meaning_list = []
@@ -80,9 +80,10 @@ def SearchFormView(request):
                 if verbs:
                     print()
                     if request.GET['verb_conj'] == 'and':
-                        examples_for_verb = LanguageExample.objects.filter(meaning=mex,verbs__in=verbs).annotate(num_verbs=Count('verbs')).filter(num_verbs >= len(verbs))
+                        examples_for_verb = LanguageExample.objects.filter(meaning=mex)
+                        for v in verbs:
+                            examples_for_verb = examples_for_verb.filter(verbs__in=[v])
                     else:
-                        query = reduce(operator.or_, (Q(verbs__in = item) for item in verbs))
                         examples_for_verb = LanguageExample.objects.filter(meaning=mex,verbs__in=verbs)
                 else:
                     examples_for_verb = True
