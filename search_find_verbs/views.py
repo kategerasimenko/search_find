@@ -32,7 +32,8 @@ def create_hierarchy(meaning_pk):
 class IndexView(generic.ListView):
     template_name = 'index.html'
     model = SemanticField
-    context_object_name = 'field_list'    
+    context_object_name = 'field_list'
+    ordering = ['field']
 
 def SemanticFieldView(request,pk):
     template_name = 'verb.html'
