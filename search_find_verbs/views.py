@@ -77,7 +77,15 @@ def SearchFormView(request):
             for mex in meaningexamples:
                 langex = OrderedDict.fromkeys([x.language for x in langs],value=('',''))
                 examples_all = LanguageExample.objects.filter(meaning=mex)
-                examples_for_verb = LanguageExample.objects.filter(meaning=mex,verbs__in=verbs) if verbs else True
+                if verbs:
+                    print()
+                    if request.GET['verb_conj'] == 'and':
+                        examples_for_verb = LanguageExample.objects.filter(meaning=mex,verbs__in=verbs).annotate(num_verbs=Count('verbs')).filter(num_verbs >= len(verbs))
+                    else:
+                        query = reduce(operator.or_, (Q(verbs__in = item) for item in verbs))
+                        examples_for_verb = LanguageExample.objects.filter(meaning=mex,verbs__in=verbs)
+                else:
+                    examples_for_verb = True
                 examples_for_ex = LanguageExample.objects.filter(meaning=mex,example__contains=request.GET['example']) if request.GET['example'] else True
                 if examples_for_verb and examples_for_ex:
                     for ex in examples_all:
