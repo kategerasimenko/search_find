@@ -18,6 +18,7 @@ from .views import *
 
 urlpatterns = [
     url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^(?P<pk>\w+)/$', SemanticFieldView, name='semanticfield'),
+    url(r'^(?P<pk>[0-9]+)/$', SemanticFieldView, name='semanticfield'),
+    url(r'^search/$', SearchFormView, name='search')
 ]
 

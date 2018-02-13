@@ -39,8 +39,21 @@ def SemanticFieldView(request,pk):
         meaning_list[i] = (item[0],n,subgroups)
     return render(request,template_name,{'field':semfield.field,'langs':langs,'all_meanings':meaning_list})
     #return HttpResponse(html.escape(pprint.pformat(langex)))
-    
-    
+
+def SearchFormView(request):
+    template_name = 'search_form.html'
+    choices = (
+        ('Семантическое поле', [(x.pk, x.field) for x in SemanticField.objects.all()]),
+        ('Тип значения', [(x.pk, x.meaning_type) for x in MeaningType.objects.all()]),
+        ('Значение', [(x.pk, x.meaning) for x in Meaning.objects.all()]),
+        ('Референтность объекта', OBJECT_REF_CHOICES),
+        ('Одушевленность объекта', OBJECT_ANIMACY_CHOICES),
+        ('Намерение', PURPOSE_CHOICES),
+        ('Язык', [(x.pk, x.language) for x in Language.objects.all()]),
+        ('Глагол', [(x.pk, x.verb) for x in Verb.objects.all()])
+)
+    return render(request,template_name,{'choices':choices})
+    #return HttpResponse(html.escape(pprint.pformat(choices)))
     
     
 
