@@ -60,7 +60,7 @@
     <!--делаем строки-->
     <!--с th scope="row" будет выделена-->
     <!--с rowspan="число" будет объединение ячеек на указанное кол-во-->
-    {% for meaning_type,mtn,meanings in all_meanings %}
+    {% for meaning_type, mtn, meanings in all_meanings %}
         <tr>
             <th scope="row" rowspan="{{ mtn }}">{{ meaning_type }}</th>
             {% for meaning,mn,specmeanings in meanings %}
@@ -77,11 +77,9 @@
                     </tr>
                     <tr>
                 {% endfor %}
-                    </tr>
-                    <tr>
+
                 {% endfor %}
-                </tr>
-                <tr>
+
             {% endfor %}
         </tr>
     {% endfor %}
