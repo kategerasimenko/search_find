@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>База данных <...></title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+    <!--       нужна ссылка на главную -->
+    <a class="navbar-brand display-1" href="{% url 'index' %}">База данных <...></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <!--                   нужна ссылка -->
+                <a class="nav-link" href="{% url 'index' %}">Глаголы <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'search' %}">Поиск</a>
+            </li>
+            <li class="nav-item">
+                <!--                   нужна ссылка -->
+                <a class="nav-link" href="#">О проекте</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div id="search-instruction" class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4>Поиск ...</h4>
+            <p>как искать</p>
+        </div>
+    </div>
+</div>
+<form>
+    <div class="container">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-3 form-group">
+                <div class="container text-center">
+                    <h6>{{form.verb.label}}</h6>
+                </div>
+                {{form.verb}}
+            </div>
+            <div class="col-2 form-group">
+                <div class="container text-center">
+                    <h6>{{form.verb_conj.label}}</h6>
+                </div>
+                {{form.verb_conj}}
+            </div>
+            <div class="col form-group">
+                <div class="text-center">
+                    <h6>{{form.semfield.label}}</h6>
+                </div>
+                {{form.semfield}}
+            </div>
+            <div class="col form-group">
+                <div class="container text-center">
+                    <h6>{{form.language.label}}</h6>
+                </div>
+                {{form.language}}
+            </div>
+            <div class="w-100"></div>
+            <div id="meaning" class="col form-group">
+                <div class="container text-center">
+                    <h6>{{form.meaning.label}}</h6>
+                </div>
+                {{form.meaning}}
+            </div>
+            <div class="col form-check">
+                <div class="container text-center">
+                    <h6>{{form.meaning_type.label}}</h6>
+                </div>
+                {{form.meaning_type}}
+            </div>
+            <div class="col form-check">
+                <div class="container text-center">
+                    <h6>{{form.object_ref.label}}</h6>
+                </div>
+                {{form.object_ref}}
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col form-check">
+                <div class="container text-center">
+                    <h6>{{form.object_animacy.label}}</h6>
+                </div>
+                {{form.object_animacy}}
+            </div>
+            <div class="col form-check">
+                <div class="container text-center">
+                    <h6>{{form.purpose.label}}</h6>
+                </div>
+                {{form.purpose}}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="container text-center">
+                <h6>{{form.example.label}}</h6>
+            </div>
+            {{form.example}}
+        </div>
+        <input id='btn-submit-search' type="submit" class="btn btn-primary " value="Искать" />
+    </div>
+</form>
+<footer class="footer ">
+    <div class="row justify-content-center">
+        <a href="{% url 'admin:index' %}" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>
+    </div>
+</footer>
+<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
