@@ -73,9 +73,10 @@
     {% for meaning_type,mtn,meanings in all_meanings %}
         <tr>
             <th scope="row" rowspan="{{ mtn }}">{{ meaning_type }}</th>
-            {% for meaning,mn,examples in meanings %}
-                <th scope="row" rowspan="{{ mn }}">{{ meaning.meaning }}</th>
-                <td scope="row" rowspan="{{ mn }}">{{ meaning.object_ref }}, {{ meaning.object_animacy }}, {{ meaning.purpose }}</td>
+            {% for meaning,mn,specmeanings in meanings %}
+                <th scope="row" rowspan="{{ mn }}">{{ meaning }}</th>
+                {% for specmeaning,smn,examples in specmeanings %}
+                <td scope="row" rowspan="{{ smn }}">{{ specmeaning.object_ref }}, {{ specmeaning.object_animacy }}, {{ specmeaning.purpose }}</td>
                 {% for example,langs in examples %}
                         <td scope="row">{{ example.specification }}</td>
                         <td scope="row">{{ example.example }}</td>
@@ -83,6 +84,9 @@
                             <td scope="row">{% for verb in langex.verbs.all %}{{ verb.verb }},{% endfor %}</td>
                             <td scope="row">{{ langex.example }}</td>
                         {% endfor %}
+                    </tr>
+                    <tr>
+                {% endfor %}
                     </tr>
                     <tr>
                 {% endfor %}
