@@ -13,7 +13,21 @@ import operator
 
 
 def create_hierarchy(meaning_pk):
-    meaning_list = [(Meaning.objects.get(pk=k),len(v),v) for k,v in meaning_pk.items()] # уровень значений + их свойств
+    meaning_list = []
+    for k,v in meaning_pk.items(): # уровень значений + их свойств
+        m = Meaning.objects.get(pk=k)
+        characteristics = []
+        if m.object_ref: 
+            characteristics.append(dict(OBJECT_REF_CHOICES)[m.object_ref])
+        if m.object_animacy: 
+            characteristics.append(dict(OBJECT_ANIMACY_CHOICES)[m.object_animacy])
+        if m.purpose:
+            characteristics.append(dict(PURPOSE_CHOICES)[m.purpose])
+        if characteristics: 
+            characteristics = ', '.join(characteristics)
+        else:
+            characteristics = ''
+        meaning_list.append((m,len(v),characteristics,v))
     meaning_list = sorted(meaning_list,key=lambda x: (x[0].meaning_type.meaning_type),reverse=True)
     meaning_list = [(k, list(g)) for k,g in groupby(meaning_list, key=lambda x: (x[0].meaning_type.meaning_type))] # уровень типов значений
     for i,item in enumerate(meaning_list):
