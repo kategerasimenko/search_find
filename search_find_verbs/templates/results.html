@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>База данных <...></title>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
+<!--     нужна ссылка на главную -->
+    <a class="navbar-brand display-1" href="#">База данных <...></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+<!--                 нужна ссылка -->
+                <a class="nav-link" href="{% url 'index' %}">Глаголы <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'search' %}">Поиск</a>
+            </li>
+            <li class="nav-item">
+<!--                 нужна ссылка -->
+                <a class="nav-link" href="#">О проекте</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+{% for field, all_meanings in results %}
+<div id="verb" class="container-fluid">
+    <!--вставляем сюда глагол-->
+    <div class="row">
+        <h2>{{ field }}</h2>
+        <!--можно ещё какую-то инфу о нем написать-->
+    </div>
+</div>
+<div class="table-responsive">
+<table id="large-table" class="table table-hover" frame="vsides">
+    <thead class="thead-light">
+    <!--делаем названия столбцов-->
+    <tr>
+        <th scope="col">Тип значения</th>
+        <th scope="col">Значение</th>
+        <th scope="col">Характеристики</th>
+        <th scope="col">Примечания</th>
+        <th scope="col">Примеры контекстов</th>
+        {% for lang in langs %}
+            <th scope="col">{{ lang.language }}: глагол</th>
+            <th scope="col">{{ lang.language }}: пример</th>
+        {% endfor %}
+    </tr>
+    </thead>
+    <tbody>
+    <!--делаем строки-->
+    <!--с th scope="row" будет выделена-->
+    <!--с rowspan="число" будет объединение ячеек на указанное кол-во-->
+    {% for meaning_type,mtn,meanings in all_meanings %}
+        <tr>
+            <th scope="row" rowspan="{{ mtn }}">{{ meaning_type }}</th>
+            {% for meaning,mn,specmeanings in meanings %}
+                <th scope="row" rowspan="{{ mn }}">{{ meaning }}</th>
+                {% for specmeaning,smn,examples in specmeanings %}
+                <td scope="row" rowspan="{{ smn }}">{{ specmeaning.object_ref }}, {{ specmeaning.object_animacy }}, {{ specmeaning.purpose }}</td>
+                {% for example,langs in examples %}
+                        <td scope="row">{{ example.specification }}</td>
+                        <td scope="row">{{ example.example }}</td>
+                        {% for lang,langex in langs.items %}
+                            <td scope="row">{{ langex.0 }}</td>
+                            <td scope="row">{{ langex.1 }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                {% endfor %}
+                    </tr>
+                    <tr>
+                {% endfor %}
+                </tr>
+                <tr>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endfor %}
+<footer class="footer ">
+    <div class="row justify-content-center">
+        <a href="admin/" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>
+    </div>
+</footer>
+<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
