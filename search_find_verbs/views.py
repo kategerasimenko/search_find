@@ -92,7 +92,7 @@ def SearchFormView(request):
         return render(request,template_name,{'results':meaning_list,'langs':langs})
         
     template_name = 'search_form.html'
-    form = SearchForm()
+    form = SearchForm(initial={'verb_conj': 'and'})
     return render(request,template_name,{'form':form})
     
     
