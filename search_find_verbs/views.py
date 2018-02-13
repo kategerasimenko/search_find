@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 from collections import defaultdict, OrderedDict
 from itertools import groupby
@@ -42,17 +43,8 @@ def SemanticFieldView(request,pk):
 
 def SearchFormView(request):
     template_name = 'search_form.html'
-    choices = (
-        ('Семантическое поле', [(x.pk, x.field) for x in SemanticField.objects.all()]),
-        ('Тип значения', [(x.pk, x.meaning_type) for x in MeaningType.objects.all()]),
-        ('Значение', [(x.pk, x.meaning) for x in Meaning.objects.all()]),
-        ('Референтность объекта', OBJECT_REF_CHOICES),
-        ('Одушевленность объекта', OBJECT_ANIMACY_CHOICES),
-        ('Намерение', PURPOSE_CHOICES),
-        ('Язык', [(x.pk, x.language) for x in Language.objects.all()]),
-        ('Глагол', [(x.pk, x.verb) for x in Verb.objects.all()])
-)
-    return render(request,template_name,{'choices':choices})
+    form = SearchForm()
+    return render(request,template_name,{'form':form})
     #return HttpResponse(html.escape(pprint.pformat(choices)))
     
     

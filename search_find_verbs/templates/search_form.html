@@ -37,30 +37,13 @@
             <p>как искать</p>
         </div>
     </div>
-    <div class="container">
-        <div class="row justify-content-center">
-        <!--тут создаются чекбоксы-->
-        <!--каждому нужно добавить своё id и value-->
-            {% for choice,options in choices %}
-            <h6>{{ choice }}</h6>
-            {% for value,label in options %}
-            <div class="col form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{ value }}">
-                <label class="form-check-label" for="inlineCheckbox1">{{ label }}</label>
-            </div>
-            {% endfor %}
-        <!--вот эта строчка между чекбоксами переводит все последующие на новую строку-->
-            <div class="w-100"></div>
-            {% endfor %}
-        </div>
-    </div>
-    <div id="search-example" class="form-group">
-    <!--поиск примера-->
-    <!--надо добавить id и по желанию placeholder (то, что будет сереньким внутри)-->
-        <label for="new_id"><h6>Поиск по примерам</h6></label>
-        <input type="email" class="form-control" id="new_id" placeholder="name@example.com">
-    </div>
-    <button id='btn-submit-search' type="submit" class="btn btn-primary ">Искать</button>
+    <table>
+    <form>
+    {% csrf_token %}
+    {{ form }}
+    <tr><td><input id='btn-submit-search' type="submit" class="btn btn-primary " value="Искать" /></td></tr>
+    </form>
+    </table>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
