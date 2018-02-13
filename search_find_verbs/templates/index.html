@@ -24,6 +24,9 @@
                     <a class="nav-link" href="#">Глаголы <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="search/">Поиск</a>
+                </li>
+                <li class="nav-item">
 <!--                   нужна ссылка -->
                     <a class="nav-link" href="#">О проекте</a>
                 </li>
@@ -36,25 +39,26 @@
             <p class="lead">информация о базе</p>
             <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">о проекте &raquo;</a>
         </div>
-        <div id="verb-names" class="container">
+        <div class="container">
         <!--вставляем сюда глагол и инфу-->
             {% for f in field_list %}
                 <div class="row">
                     <div class="col">
-                        <h2><a href="{% url 'semanticfield' f.id %}">{{ f }}</a></h2>
+                        <p class="text-center">
+                            <h3><a href="{% url 'semanticfield' f.id %}">{{ f }}</a></h3>
+                        </p>
                     </div>
                     <div class="col">
                         информация о нем
                     </div>
-                    <div class="w-100"></div>
-                    <hr>
-            {% endfor %}
                 </div>
+                <hr>
+            {% endfor %}
         </div>
     </main>
     <footer class="footer ">
         <div class="row justify-content-center">
-            <a href="admin/" class="btn btn-outline-dark border-0" role="button">Вход для редакторов</a>
+            <a href="admin/" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>
         </div>
     </footer>
   <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
