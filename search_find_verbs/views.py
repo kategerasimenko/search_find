@@ -9,10 +9,12 @@ from itertools import groupby
 import html
 import pprint
 
+
 class IndexView(generic.ListView):
     template_name = 'index.html'
     model = SemanticField
-    context_object_name = 'field_list'    
+    context_object_name = 'field_list'
+
 
 def SemanticFieldView(request,pk):
     template_name = 'verb.html'
@@ -41,13 +43,9 @@ def SemanticFieldView(request,pk):
     return render(request,template_name,{'field':semfield.field,'langs':langs,'all_meanings':meaning_list})
     #return HttpResponse(html.escape(pprint.pformat(langex)))
 
+
 def SearchFormView(request):
     template_name = 'search_form.html'
     form = SearchForm()
-    return render(request,template_name,{'form':form})
+    return render(request, template_name, {'form': form})
     #return HttpResponse(html.escape(pprint.pformat(choices)))
-    
-    
-
-        
-            
