@@ -80,9 +80,9 @@
                 {% for example,langs in examples %}
                         <td scope="row">{{ example.specification }}</td>
                         <td scope="row">{{ example.example }}</td>
-                        {% for langex in langs %}
-                            <td scope="row">{% for verb in langex.verbs.all %}{{ verb.verb }},{% endfor %}</td>
-                            <td scope="row">{{ langex.example }}</td>
+                        {% for lang,langex in langs.items %}
+                            <td scope="row">{{ langex.0 }}</td>
+                            <td scope="row">{{ langex.1 }}</td>
                         {% endfor %}
                     </tr>
                     <tr>
