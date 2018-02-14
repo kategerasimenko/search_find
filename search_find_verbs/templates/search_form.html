@@ -20,14 +20,14 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <!--                   нужна ссылка -->
                 <a class="nav-link" href="{% url 'index' %}">Глаголы</a>
             </li>
             <li class="nav-item  active">
                 <a class="nav-link" href="{% url 'search' %}">Поиск <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <!--                   нужна ссылка -->
+                <a class="nav-link" href="{% url 'articles' %}">Статьи</a>
+            <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">О проекте</a>
             </li>
         </ul>
@@ -36,8 +36,14 @@
 <div id="search-instruction" class="container">
     <div id="search-instruction-card" class="card">
         <div class="card-body">
-            <h4>Поиск ...</h4>
-            <p>как искать</p>
+            <h4>Поиск</h4>
+            <h5>Как искать</h5>
+            <ul>
+            <li>Все поля, кроме поля "Пример" - это поля для множественного выбора.</li>
+            <li>Везде, кроме поля "Глагол", опции объединяются через логический оператор ИЛИ. Например, если в "Одушевленности объекта" поставить галочки на "одушевленный" и "неодушевленный", найдутся все контексты, где стоит метка одушевленного или неодушевленного объекта. </li>
+            <li>Для поля "Глагол" можно выбрать логический оператор, через который объединять несколько выбранных значений (поле "Отношение между несколькими выбранными глаголами"). По умолчанию стоит опция AND, что значит, что при выборе, например, одновременно глаголов "найти" и "поискать", будут выведены только те контексты, где могут употребляться оба этих глагола. При выборе этих глаголов с оператором OR в результатах будут контексты, где употребляется "найти" или "поискать" или оба.</li>
+            <li>В полях, где дан список значений, несколько значений можно выбрать, зажав клавишу Ctrl и кликая на необходимые опции.</li>
+            </ul>
         </div>
     </div>
     <table>
@@ -165,12 +171,12 @@
         </div>
     </td>
     </tr>
-    <tr><td><a class="btn btn-primary" href="#" role="button">Искать</a></td></tr>
+    <tr><td><input type="submit" class="btn btn-primary " value="Искать" /></td></tr>
     </form>
     </table>
 </div>
 
-<footer class="footer">
+<footer class="footer sticky-bottom">
     <div class="row justify-content-center">
         <a href="{% url 'admin:index' %}" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>
     </div>
