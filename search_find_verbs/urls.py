@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/$', SemanticFieldView, name='semanticfield'),
     url(r'^about/', AboutView, name='about'),
     url(r'^search/$', SearchFormView, name='search'),
-    url(r'^articles/$', SearchFormView, name='articles')
+    url(r'^articles/$', ArticleView, name='articles')
 ]
 

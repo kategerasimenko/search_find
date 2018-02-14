@@ -125,7 +125,8 @@ def SearchFormView(request):
 
 def AboutView(request):
     return render(request, 'about.html')
+    
 def ArticleView(request):
-    return render(request, 'article.html')
+    return render(request, 'articles.html')
         
             
