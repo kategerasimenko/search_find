@@ -1,12 +1,12 @@
-{% load static %}
+% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <title>ЕВРика</title>
 </head>
@@ -24,11 +24,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'search' %}">Поиск</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'articles' %}">Статьи</a>
-            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{% url 'about' %}">О проекте <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'articles' %}">Статьи <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'about' %}">О проекте</a>
             </li>
         </ul>
     </div>
@@ -37,13 +37,6 @@
     <div class="card-body">
         <p class="text-justify">
         </p>
-        <ul class="list-group">
-            <a href="../static/files/Апресян.pdf" class="list-group-item list-group-item-action"><h6>В. Ю. Апресян</h6> Почему ‘искать’ иногда значит ‘находить’, а ‘находить’ иногда значит ‘искать’?</a>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
     </div>
 </div>
 <footer class="footer sticky-bottom">
