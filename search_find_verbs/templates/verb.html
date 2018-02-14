@@ -39,7 +39,7 @@
         <!--можно ещё какую-то инфу о нем написать-->
     </div>
 </div>
-<div class="table-responsive">
+<!--<div class="table-responsive">-->
 <table class="table table-hover" frame="vsides">
     <thead class="thead-light">
     <!--делаем названия столбцов-->
@@ -50,8 +50,7 @@
         <th scope="col">Примечания</th>
         <th scope="col">Примеры контекстов</th>
         {% for lang in langs %}
-            <th scope="col">{{ lang.language }}: глагол</th>
-            <th scope="col">{{ lang.language }}: пример</th>
+            <th scope="col">{{ lang.language }}</th>
         {% endfor %}
     </tr>
     </thead>
@@ -67,12 +66,17 @@
                 {% for specmeaning,smn,characteristics,examples in specmeanings %}
                 <td scope="row" rowspan="{{ smn }}">{{ characteristics }}</td>
                 {% for example,langs in examples %}
-                        <td scope="row">{{ example.specification }}</td>
-                        <td scope="row">{{ example.example }}</td>
-                        {% for lang,langex in langs.items %}
+                        <td scope="row" rowspan="2">{{ example.specification }}</td>
+                        <td scope="row" rowspan="2">{{ example.example }}</td>
+                        {% for langex in langs.values %}
                             <td scope="row">{{ langex.0 }}</td>
-                            <td scope="row">{{ langex.1 }}</td>
                         {% endfor %}
+                        </tr>
+                        <tr>
+                         {% for langex in langs.values %}
+                            <td scope="row">{{ langex.1 }}</td>
+                        {% endfor %}                       
+                        
                     </tr>
                     <tr>
                 {% endfor %}
@@ -84,7 +88,7 @@
     {% endfor %}
     </tbody>
 </table>
-</div>
+<!--</div>-->
 <footer class="footer ">
     <div class="row justify-content-center">
         <a href="{% url 'admin:index' %}" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>

@@ -27,7 +27,7 @@ def create_hierarchy(meaning_pk):
             characteristics = ', '.join(characteristics)
         else:
             characteristics = ''
-        meaning_list.append((m,len(v),characteristics,v))
+        meaning_list.append((m,len(v)*2,characteristics,v))
     meaning_list = sorted(meaning_list,key=lambda x: (x[0].meaning_type.meaning_type),reverse=True)
     meaning_list = [(k, list(g)) for k,g in groupby(meaning_list, key=lambda x: (x[0].meaning_type.meaning_type))] # уровень типов значений
     for i,item in enumerate(meaning_list):
