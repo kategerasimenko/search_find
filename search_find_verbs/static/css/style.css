@@ -43,16 +43,20 @@ a:hover, a:focus{
     font-size: 40px;
 }
 
+.footer{
+    margin-top: 60px;
+}
+
+.table-font{
+    font-size: 10px;
+}
+
 #verb{
     padding: 20px;
     padding-left: 70px;
     /*margin-top: 20px;*/
     /*margin-bottom: 20px;*/
     background-color: whitesmoke;
-}
-
-#btn-submit-search{
-    margin-top: 10px;
 }
 
 #search-example{
