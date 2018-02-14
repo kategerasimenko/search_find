@@ -13,4 +13,4 @@ class SearchForm(forms.Form):
         language = forms.ModelMultipleChoiceField(queryset=Language.objects.all().order_by('language'),required=False, label='Язык', widget=forms.SelectMultiple(attrs={'multiple class':'form-control', 'size': 'md'}))
         verb_conj = forms.ChoiceField(choices=[('and','AND'),('or','OR')], widget=forms.RadioSelect(attrs={'class': 'form-check-label'}), label='Отношение между несколькими выбранными глаголами')
         verb = forms.ModelMultipleChoiceField(queryset=Verb.objects.all().order_by('language__language','verb'),required=False, label='Глагол', widget=forms.SelectMultiple(attrs={'class':'form-control', 'size': 'big'}))
-        example = forms.CharField(max_length=300,required=False, label='Пример', widget=forms.Textarea(attrs={'class':'form-control'}))
+        example = forms.CharField(max_length=300,required=False, label='Пример', widget=forms.Textarea(attrs={'class':'form-control', 'rows':1}))

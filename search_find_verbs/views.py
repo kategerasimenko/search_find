@@ -58,7 +58,7 @@ def SemanticFieldView(request,pk):
     for mex in meaningexamples:
         langex = OrderedDict.fromkeys([x.language for x in langs],value=('',''))
         for ex in LanguageExample.objects.filter(meaning=mex):
-            langex[ex.language.language] = (', '.join([x.verb for x in ex.verbs.all()]), ex.example.replace('\n','<br/>'))
+            langex[ex.language.language] = (', '.join([x.verb for x in ex.verbs.all()]), ex.example.replace('\n','; '))
         meaning_pk[mex.meaning.pk].append((mex,langex))
     meaning_list = create_hierarchy(meaning_pk)
     return render(request,template_name,{'field':semfield.field,'langs':langs,'all_meanings':meaning_list})
@@ -109,7 +109,7 @@ def SearchFormView(request):
                 if examples_for_verb and examples_for_ex:
                     for ex in examples_all:
                         if ex.language.language in langex:
-                            langex[ex.language.language] = (', '.join([x.verb for x in ex.verbs.all()]), ex.example.replace('\n','<br />')) #br not working
+                            langex[ex.language.language] = (', '.join([x.verb for x in ex.verbs.all()]), ex.example.replace('\n','; ')) #br not working
                     meaning_pk[mex.meaning.pk].append((mex,langex))
             meaning_list_curr = create_hierarchy(meaning_pk)
             if meaning_list_curr:
