@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark sticky-top bg-dark">
-    <a class="navbar-brand display-1" href="#">ЕВРика</a>
+    <a class="navbar-brand display-1" href="{% url 'index' %}">ЕВРика</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,12 +36,12 @@
 <div id="verb" class="container-fluid">
     <!--вставляем сюда глагол-->
     <div class="row">
-        <h2>{{ field }}</h2>
+        <h3>{{ field }}</h3>
         <!--можно ещё какую-то инфу о нем написать-->
     </div>
 </div>
 <div class="table-responsive">
-<table id="large-table" class="table table-font" frame="vsides">
+<table class="table table-font" frame="vsides">
     <thead class="thead-light table-font-lg">
     <!--делаем названия столбцов-->
     <tr>
@@ -51,16 +51,12 @@
         <th scope="col">Примечания</th>
         <th scope="col">Примеры контекстов</th>
         {% for lang in langs %}
-            <th scope="col">{{ lang.language }}: глагол</th>
-            <th scope="col">{{ lang.language }}: пример</th>
+            <th scope="col">{{ lang.language }}</th>
         {% endfor %}
     </tr>
     </thead>
     <tbody>
-    <!--делаем строки-->
-    <!--с th scope="row" будет выделена-->
-    <!--с rowspan="число" будет объединение ячеек на указанное кол-во-->
-    {% for meaning_type,mtn,meanings in all_meanings %}
+    {% for meaning_type, mtn, meanings in all_meanings %}
         <tr>
             <th scope="row" class="table-font-lg" rowspan="{{ mtn }}">{{ meaning_type }}</th>
             {% for meaning,mn,specmeanings in meanings %}
@@ -68,16 +64,22 @@
                 {% for specmeaning,smn,characteristics,examples in specmeanings %}
                 <td scope="row" rowspan="{{ smn }}">{{ characteristics }}</td>
                 {% for example,langs in examples %}
-                        <td scope="row">{{ example.specification }}</td>
-                        <td scope="row" class="table-font-lg">{{ example.example }}</td>
-                        {% for lang,langex in langs.items %}
+                        <td scope="row" rowspan="2">{{ example.specification }}</td>
+                        <td scope="row" class="table-font-lg" rowspan="2">{{ example.example }}</td>
+                        {% for langex in langs.values %}
                             <td scope="row" class="table-font-lg">{{ langex.0 }}</td>
+                        {% endfor %}
+                        </tr>
+                        <tr>
+                         {% for langex in langs.values %}
                             <td scope="row">{{ langex.1 }}</td>
                         {% endfor %}
                     </tr>
                     <tr>
                 {% endfor %}
+
                 {% endfor %}
+
             {% endfor %}
         </tr>
     {% endfor %}
