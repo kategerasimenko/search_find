@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2:800');
+
 body {
     background-color: whitesmoke;
     font-size: 15px;
@@ -41,6 +43,7 @@ a:hover, a:focus{
 
 .navbar-brand{
     font-size: 40px;
+    font-family: 'Exo 2', sans-serif;
 }
 
 .footer{
@@ -55,8 +58,8 @@ a:hover, a:focus{
     font-size: 16px;
 }
 
-.container-card{
-    margin-top: 40px;
+.card{
+    margin-top: 20px;
 }
 
 #verb{
@@ -78,4 +81,5 @@ a:hover, a:focus{
 #search-instruction-card{
     margin-bottom: 30px;
 }
+
 
