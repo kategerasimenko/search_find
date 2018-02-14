@@ -102,7 +102,10 @@ def SearchFormView(request):
                         examples_for_verb = LanguageExample.objects.filter(meaning=mex,verbs__in=verbs)
                 else:
                     examples_for_verb = True
-                examples_for_ex = LanguageExample.objects.filter(meaning=mex,example__contains=request.GET['example']) if request.GET['example'] else True
+                if 'example' in request.GET and request.GET['example']:
+                    examples_for_ex = LanguageExample.objects.filter(meaning=mex,example__contains=request.GET['example']) 
+                else:
+                    examples_for_ex = True
                 if examples_for_verb and examples_for_ex:
                     for ex in examples_all:
                         if ex.language.language in langex:
