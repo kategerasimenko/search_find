@@ -51,6 +51,14 @@ a:hover, a:focus{
     font-size: 12px;
 }
 
+.table-font-lg{
+    font-size: 16px;
+}
+
+.container-card{
+    margin-top: 40px;
+}
+
 #verb{
     padding: 20px;
     padding-left: 70px;
