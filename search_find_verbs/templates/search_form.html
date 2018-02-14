@@ -45,7 +45,7 @@
     <tr>
     <td rowspan="2">
         <div class="col form-group">
-            <div class="text-center">
+            <div class="container">
                 <h6>{{form.semfield.label}}</h6>
             </div>
             {{form.semfield}}
@@ -53,7 +53,7 @@
     </td>
     <td rowspan="2">
         <div class="col form-group">
-            <div class="container text-center">
+            <div class="container">
                 <h6>{{form.verb.label}}</h6>
             </div>
             {{form.verb}}
@@ -88,7 +88,7 @@
     <tr>
     <td rowspan="2">
         <div class="col form-group">
-            <div class="container text-center">
+            <div class="container">
                 <h6>{{form.meaning.label}}</h6>
             </div>
             {{form.meaning}}
@@ -96,7 +96,7 @@
     </td>
     <td>
         <div class="col form-check">
-            <div class="container text-center">
+            <div class="container">
                 <h6>{{form.meaning_type.label}}</h6>
             </div>
             {% for elem in form.meaning_type %}
@@ -111,7 +111,7 @@
     </td>
     <td>
         <div class="col form-check">
-            <div class="container text-center">
+            <div class="container">
                 <h6>{{form.object_ref.label}}</h6>
             </div>
             {% for elem in form.object_ref %}
@@ -128,7 +128,7 @@
     <tr>
     <td>
         <div class="col form-check">
-            <div class="container text-center">
+            <div class="container">
                 <h6>{{form.object_animacy.label}}</h6>
             </div>
             {% for elem in form.object_animacy %}
@@ -143,7 +143,7 @@
     </td>
     <td>
         <div class="col form-check">
-            <div class="container text-center">
+            <div class="container">
                 <h6>{{form.purpose.label}}</h6>
             </div>
             {% for elem in form.purpose %}
@@ -165,10 +165,12 @@
         </div>
     </td>
     </tr>
+    <tr><td><a class="btn btn-primary" href="#" role="button">Искать</a></td></tr>
     </form>
     </table>
 </div>
-<footer class="footer ">
+
+<footer class="footer">
     <div class="row justify-content-center">
         <a href="{% url 'admin:index' %}" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>
     </div>
