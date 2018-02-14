@@ -25,6 +25,15 @@ a:hover, a:focus{
     outline: 0;
 }
 
+[size='md'] {
+    height: 150px;
+    width: 200px;
+}
+[size='big'] {
+    height: 400px;
+    width: 300px;
+}
+
 .navbar{
     font-size: 20px;
     padding: 20px 50px;
@@ -42,10 +51,6 @@ a:hover, a:focus{
     background-color: whitesmoke;
 }
 
-#checkboxes{
-    margin-top: 20px;
-}
-
 #btn-submit-search{
     margin-top: 10px;
 }
@@ -55,7 +60,10 @@ a:hover, a:focus{
 }
 
 #search-instruction{
-    margin-bottom: 30px;
+    margin-top: 20px;
 }
 
+#search-instruction-card{
+    margin-bottom: 30px;
+}
 
