@@ -37,7 +37,7 @@
     <div id="search-instruction-card" class="card">
         <div class="card-body">
             <h4>Поиск</h4>
-            <h5>Как искать</h5>
+            <h6>Как искать:</h6>
             <ul>
             <li>Все поля, кроме поля "Пример" - это поля для множественного выбора.</li>
             <li>Везде, кроме поля "Глагол", опции объединяются через логический оператор ИЛИ. Например, если в "Одушевленности объекта" поставить галочки на "одушевленный" и "неодушевленный", найдутся все контексты, где стоит метка одушевленного или неодушевленного объекта. </li>
@@ -167,7 +167,7 @@
     <td colspan="3">
         <div class="form-group">
             <label for="{{form.example.id_for_label}}"><h6>{{form.example.label}}</h6></label>
-            {{form.example}}
+            <textarea class="form-control" id="{{form.example.id_for_label}}" rows="1"></textarea>
         </div>
     </td>
     </tr>
