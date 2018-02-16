@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2:800');
 
 body {
-    background-color: whitesmoke;
     font-size: 15px;
     color: #555;
 
@@ -27,6 +26,10 @@ a:hover, a:focus{
     outline: 0;
 }
 
+img {
+    margin: 30px auto;
+}
+
 [size='md'] {
     height: 150px;
     width: 200px;
@@ -36,14 +39,8 @@ a:hover, a:focus{
     width: 300px;
 }
 
-.navbar{
+.navbar-dark{
     font-size: 20px;
-    padding: 20px 50px;
-}
-
-.navbar-brand{
-    font-size: 40px;
-    font-family: 'Exo 2', sans-serif;
 }
 
 .footer{
@@ -58,8 +55,16 @@ a:hover, a:focus{
     font-size: 16px;
 }
 
-.card{
-    margin-top: 20px;
+.heading-l{
+    margin: 40px auto 30px auto;
+}
+
+.heading-s{
+    margin: 30px auto 20px auto;
+}
+
+.biblio{
+    font-size: larger;
 }
 
 #verb{
