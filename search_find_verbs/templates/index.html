@@ -2,13 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  
-  <title>ЕВРика</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script defer src="//use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>ЕВРика</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-md sticky-top navbar-dark" style="background-color: #3b8bd7;">
@@ -32,19 +31,21 @@
                 <li class="nav-item">
                 <a class="nav-link" href="{% url 'about' %}">О проекте</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}"><i class="fas fa-user"></i></a>
+                </li>
             </ul>
         </div>
     </nav>
-    <main role="main" class="container">
+    <main role="main" class="container mt-3">
         <div class="jumbotron">
             <h1>ЕВРика</h1>
             <p class="lead">База данных глаголов поиска и находки</p>
             <a class="btn btn-lg btn-primary" href="{% url 'search' %}" role="button">Поиск &raquo;</a>
         </div>
         <div class="container">
-        <!--вставляем сюда глагол и инфу-->
             {% for f in field_list %}
-                <div class="row">
+                <div class="container">
                     <div class="col">
                         <h4><a href="{% url 'semanticfield' f.id %}">{{ f }}</a></h4>
                     </div>
@@ -53,12 +54,8 @@
             {% endfor %}
         </div>
     </main>
-    <footer class="footer sticky-bottom">
-        <div class="row justify-content-center">
-            <a href="{% url 'admin:index' %}" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>
-        </div>
-    </footer>
-  <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <footer class="footer sticky-bottom"></footer>
+    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>

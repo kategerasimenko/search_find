@@ -1,15 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Exo+2:800');
-
 body {
     font-size: 15px;
     color: #555;
+    margin-bottom: 50px;
 
     --webkit-font-smoothing: antialised;
     --webkit-overflow-scrolling: touch;
-}
-
-main{
-    margin-top: 20px;
 }
 
 hr{
@@ -72,7 +67,7 @@ img {
     padding-left: 70px;
     /*margin-top: 20px;*/
     /*margin-bottom: 20px;*/
-    background-color: whitesmoke;
+    /*background-color: whitesmoke;*/
 }
 
 #search-example{

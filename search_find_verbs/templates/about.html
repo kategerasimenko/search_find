@@ -4,75 +4,72 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script defer src="//use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <title>ЕВРика</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-md sticky-top navbar-dark" style="background-color: #3b8bd7;">
-    <a class="navbar-brand" href="{% url 'index' %}">
-        <img src="{% static 'img/Asset_1_1_2x.png' %}" width="140" height="60" alt="">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Глаголы</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'search' %}">Поиск</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'articles' %}">Сборник</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'about' %}">О проекте <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<main>
-<div class="container card">
-    <div class="card-body">
-        <h2>О проекте</h2><p class="text-justify"><br>Проект выполнен в честь юбилея <b>Е</b>катерины <b>В</b>ладимировны <b>Р</b>ахилиной,
-            выдающегося лингвиста, профессора и наставника. В основе проекта лежит база данных,
-            собранная её учениками и единомышленниками. Здесь Вы можете <b>искать</b> и <b>найти</b> глаголы поиска
-            и находки шести языков. В базе <b>находится</b> информация о семантических полях, типах значений,
-            характеристиках объекта и цели. Также тут Вы <b>обнаружите</b> примеры употребления.
-            Однако, как отмечают авторы одноимённой книги, это не обобщение завершённой работы, а материал
-            для новых находок, так что много что тут может <b>найтись</b>, доселе не найденного.
-            <br>Осторожно: находишь всегда то, что не искал.<br>
-            <br>
-
-            Над материалом работали:
-        <ul>
-        <li>Д. А. Рыжова, М. Станкович (русский и сербский языки)</li>
-        <li>А. С. Панина (японский язык)</li>
-        <li>М. В. Кюсева, И. С. Капитонов (язык кунбарланг)</li>
-        <li>Б. В. Орехов (исландский язык)</li>
-        <li>В. Ю. Гусев (нганасанский язык)</li>
-        </ul>
-
-            Сайт выполнили студенты Школы лингвистики:
-        <ul>
-            <li>Екатерина Герасименко</li>
-            <li>Анна Зуева</li>
-            <li>Елена Сокур</li>
-        </ul>
-        </p>
-    </div>
-</div>
-</main>
-<footer class="footer sticky-bottom">
-    <div class="row justify-content-center">
-        <a href="{% url 'admin:index' %}" class="btn btn-outline-dark border-0 rounded-0" role="button">Вход для редакторов</a>
-    </div>
-</footer>
-<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <nav class="navbar navbar-expand-md sticky-top navbar-dark" style="background-color: #3b8bd7;">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="{% static 'img/Asset_1_1_2x.png' %}" width="140" height="60" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Глаголы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'search' %}">Поиск</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'articles' %}">Сборник</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'about' %}">О проекте <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}"><i class="fas fa-user"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container card">
+            <div class="card-body">
+                <h2>О проекте</h2>
+                <p class="text-justify"><br>Проект выполнен в честь юбилея <b>Е</b>катерины <b>В</b>ладимировны <b>Р</b>ахилиной,
+                    выдающегося лингвиста, профессора и наставника. В основе проекта лежит база данных,
+                    собранная её учениками и единомышленниками. Здесь Вы можете <b>искать</b> и <b>найти</b> глаголы поиска
+                    и находки шести языков. В базе <b>находится</b> информация о семантических полях, типах значений,
+                    характеристиках объекта и цели. Также тут Вы <b>обнаружите</b> примеры употребления.
+                    Однако, как отмечают авторы одноимённой книги, это не обобщение завершённой работы, а материал
+                    для новых находок, так что много что тут может <b>найтись</b>, доселе не найденного.
+                    <br>Осторожно: находишь всегда то, что не искал.<br>
+                    <br>
+                    Над материалом работали:
+                    <ul>
+                        <li>Д. А. Рыжова, М. Станкович (русский и сербский языки)</li>
+                        <li>А. С. Панина (японский язык)</li>
+                        <li>М. В. Кюсева, И. С. Капитонов (язык кунбарланг)</li>
+                        <li>Б. В. Орехов (исландский язык)</li>
+                        <li>В. Ю. Гусев (нганасанский язык)</li>
+                    </ul>
+                    Сайт выполнили студенты Школы лингвистики:
+                    <ul>
+                        <li>Екатерина Герасименко</li>
+                        <li>Анна Зуева</li>
+                        <li>Елена Сокур</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </main>
+    <footer class="footer sticky-bottom"></footer>
+    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
