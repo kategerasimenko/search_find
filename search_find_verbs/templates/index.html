@@ -37,24 +37,23 @@
             </ul>
         </div>
     </nav>
-    <main role="main" class="container mt-3">
-        <div class="jumbotron">
-            <h1>ЕВРика</h1>
-            <p class="lead">База данных глаголов поиска и находки</p>
-            <a class="btn btn-lg btn-primary" href="{% url 'search' %}" role="button">Поиск &raquo;</a>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6 jumbotron mt-5 mr-auto">
+                <h1>ЕВРика</h1>
+                <p class="lead">База данных глаголов поиска и находки</p>
+                <a class="btn btn-lg btn-primary" href="{% url 'search' %}" role="button">Поиск &raquo;</a>
+            </div>
+            <div class="col-4 mt-5 mr-5">
+                <ul class="list-group">
+                    {% for f in field_list %}
+                    <a href="{% url 'semanticfield' f.id %}" class="h4 text-center list-group-item py-3">{{ f }}</a>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-        <div class="container">
-            {% for f in field_list %}
-                <div class="container">
-                    <div class="col">
-                        <h4><a href="{% url 'semanticfield' f.id %}">{{ f }}</a></h4>
-                    </div>
-                </div>
-                <hr>
-            {% endfor %}
-        </div>
-    </main>
-    <footer class="footer sticky-bottom"></footer>
+    </div>
+    <footer class="footer sticky-bottom mt-5"></footer>
     <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
