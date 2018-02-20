@@ -39,15 +39,22 @@
         </div>
     </nav>
     <div class="container mt-5">
+        <div class="col-4 mt-5 mx-auto d-sm-none">
+            <ul class="list-group">
+                {% for f in field_list %}
+                <a href="{% url 'semanticfield' f.id %}" class="h4 text-center list-group-item py-3">{{ f }}</a>
+                {% endfor %}
+            </ul>
+        </div>
         <div class="row">
-            <div class="col-4 mt-5 mr-auto">
+            <div class="col-4 mt-5 mr-auto d-none d-md-block">
                 <ul class="list-group">
                     {% for f in field_list %}
                     <a href="{% url 'semanticfield' f.id %}" class="h4 text-center list-group-item py-3">{{ f }}</a>
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-6 jumbotron mt-5">
+            <div class="col-6 jumbotron mt-5 mx-auto">
                 <h1>ЕВРика</h1>
                 <p class="lead">База данных глаголов поиска и находки</p>
                 <a class="btn btn-lg btn-primary" href="{% url 'search' %}" role="button">Поиск &raquo;</a>
